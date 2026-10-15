@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /portal/
+Disallow: /admin/
+
+Sitemap: https://alkota.co.uk/sitemap.xml
