@@ -142,13 +142,6 @@ export default function SupercarCanvas() {
         </Suspense>
       </Canvas>
 
-      {/* HUD Overlay */}
-      <div className="absolute bottom-4 left-4 pointer-events-none flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-alkota-cyan animate-ping" />
-        <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400">
-          3D TWIN: 60FPS // DRAG TO ROTATE
-        </span>
-      </div>
 
       <div className="absolute top-4 right-4 pointer-events-none text-right">
         <span className="text-[10px] font-mono tracking-wider uppercase text-slate-500 block">
