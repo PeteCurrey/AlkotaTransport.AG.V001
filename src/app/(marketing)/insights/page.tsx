@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Clock, ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import CtaStrip from "@/components/common/CtaStrip";
@@ -63,22 +63,22 @@ export default function InsightsHubPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="min-h-screen bg-alkota-abyss text-white pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="min-h-screen bg-alkota-obsidian text-alkota-ivory pt-28 pb-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
           {/* Breadcrumbs */}
           <Breadcrumbs items={[{ name: "Insights", href: "/insights" }]} />
 
           {/* Header */}
-          <header className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-alkota-cyan">
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>INDUSTRY INTELLIGENCE & PRACTICAL GUIDANCE</span>
+          <header className="max-w-3xl space-y-6">
+            <div className="flex items-center gap-2.5 text-[11px] font-mono tracking-[0.2em] uppercase text-alkota-accent">
+              <span className="w-5 h-[1px] bg-alkota-accent inline-block" />
+              <span>LOGISTICS INTELLIGENCE</span>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-display font-black uppercase tracking-tight text-white leading-tight">
-              Automotive Logistics Intelligence & Practical Guides.
+            <h1 className="font-display font-light text-[44px] sm:text-[64px] lg:text-[76px] leading-[0.96] text-alkota-ivory">
+              Logistics intelligence & operational guides.
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Transparent, compliance-first operational guidance for UK fleet operators, dealership managers, and vehicle logistics procurement teams. No marketing fluff—only verified regulations and practical fleet procedures.
+            <p className="font-sans font-light italic text-[16px] sm:text-[18px] text-alkota-silver leading-relaxed">
+              Transparent, compliance-first operational guidance for UK fleet operators, dealership managers, and vehicle logistics procurement teams. Cross-referenced with DVLA regulations and BVRLA standards.
             </p>
           </header>
 
@@ -87,39 +87,38 @@ export default function InsightsHubPage() {
             {(siteConfig.articles || []).map((article) => (
               <article
                 key={article.slug}
-                className="p-8 rounded-2xl bg-alkota-plate border border-white/10 hover:border-alkota-cyan/30 transition-all flex flex-col justify-between space-y-6 group"
+                className="p-8 sm:p-10 border border-alkota-border bg-alkota-surface hover:border-alkota-accent/40 transition-colors flex flex-col justify-between space-y-6 group"
               >
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                    <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-alkota-cyan">
+                  <div className="flex items-center justify-between text-xs font-mono text-alkota-muted">
+                    <span className="border border-white/10 px-2.5 py-0.5 text-[10px] tracking-[0.16em] uppercase text-alkota-silver">
                       {article.category}
                     </span>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-slate-500" />
-                      <span>{article.readingTimeMinutes} min read</span>
-                    </div>
+                    <span>{article.readingTimeMinutes} min read</span>
                   </div>
 
-                  <h2 className="text-2xl font-display font-bold text-white group-hover:text-alkota-cyan transition-colors leading-snug">
-                    {article.title}
+                  <h2 className="font-display text-2xl sm:text-3xl font-normal text-alkota-ivory group-hover:text-white transition-colors leading-snug">
+                    <Link href={`/insights/${article.slug}`} className="hover:underline focus:outline-none">
+                      {article.title}
+                    </Link>
                   </h2>
 
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="font-sans font-light text-sm text-alkota-silver leading-relaxed">
                     {article.summary}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <div className="text-[11px] font-mono text-slate-500">
-                    <span>Published: {article.publishedDate}</span>
-                  </div>
+                <div className="pt-4 border-t border-alkota-border flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-alkota-muted">
+                    {article.publishedDate}
+                  </span>
 
                   <Link
                     href={`/insights/${article.slug}`}
-                    className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-alkota-cyan hover:underline"
+                    className="inline-flex items-center gap-2 text-xs font-mono tracking-[0.14em] uppercase text-alkota-ivory group-hover:text-alkota-accent transition-colors"
                   >
-                    <span>Read Full Guide</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    <span>Read Guide</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-alkota-muted group-hover:text-alkota-accent" />
                   </Link>
                 </div>
               </article>
@@ -127,11 +126,8 @@ export default function InsightsHubPage() {
           </div>
 
           {/* Editorial Standards Note */}
-          <div className="p-6 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-3 text-xs font-mono text-slate-400">
-            <ShieldCheck className="w-5 h-5 text-alkota-cyan shrink-0" />
-            <span>
-              EDITORIAL INTEGRITY: All guidance is authored by logistics professionals and cross-referenced with UK DVLA regulations and BVRLA standards.
-            </span>
+          <div className="p-6 border border-alkota-border bg-alkota-surface text-xs font-mono text-alkota-muted">
+            EDITORIAL INTEGRITY: All guidance is authored by logistics professionals and cross-referenced with UK DVLA regulations and BVRLA standards.
           </div>
 
           {/* CTA Strip */}

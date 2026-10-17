@@ -1,8 +1,31 @@
 import type { Metadata } from "next";
+import { Inter, Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -111,29 +134,28 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en-GB" className="scroll-smooth">
+    <html
+      lang="en-GB"
+      className={`scroll-smooth ${inter.variable} ${cormorant.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-alkota-abyss text-slate-100 antialiased min-h-screen flex flex-col selection:bg-alkota-cyan selection:text-black">
+      <body className="bg-alkota-obsidian text-alkota-ivory antialiased min-h-screen flex flex-col selection:bg-alkota-accent selection:text-white">
         {/* Accessible Keyboard Skip Link */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] px-4 py-2 rounded-lg bg-alkota-cyan text-black font-mono text-xs font-bold uppercase tracking-wider shadow-telemetry-cyan focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] px-4 py-2 bg-alkota-accent text-white font-mono text-xs uppercase tracking-wider focus:outline-none"
         >
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="flex-1 focus:outline-none" tabIndex={-1}>{children}</main>
+        <main id="main-content" className="flex-1 focus:outline-none" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

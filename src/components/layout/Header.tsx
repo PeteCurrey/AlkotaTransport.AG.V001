@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { Menu, X, ArrowUpRight, Activity } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,64 +21,42 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-alkota-abyss/85 backdrop-blur-md border-b border-white/10 py-3 shadow-lg"
-          : "bg-transparent py-5"
+          ? "bg-alkota-obsidian/92 backdrop-blur-md border-b border-alkota-border py-4 shadow-subtle"
+          : "bg-transparent py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo & Telemetry Indicator */}
-          <div className="flex items-center gap-6">
-            <Link href="/" className="group flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-alkota-plate to-black border border-white/15 flex items-center justify-center font-display font-black text-xl text-white tracking-wider group-hover:border-alkota-cyan transition-colors">
-                A
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-black text-lg tracking-widest text-white">
-                  ALKOTA
-                </span>
-                <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase -mt-1">
-                  Automotive Logistics
-                </span>
-              </div>
-            </Link>
-
-            {/* Live Operational Beacon (Desktop Only) */}
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span>NATIONWIDE DISPATCH: ACTIVE</span>
-            </div>
-          </div>
+          {/* Brand Wordmark */}
+          <Link href="/" className="group flex items-baseline gap-2.5 focus:outline-none">
+            <span className="font-display text-2xl font-light tracking-[0.06em] text-alkota-ivory group-hover:text-white transition-colors">
+              ALKOTA
+            </span>
+            <span className="hidden sm:inline-block text-[9px] font-mono tracking-[0.22em] uppercase text-alkota-muted">
+              AUTOMOTIVE
+            </span>
+          </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          <nav className="hidden md:flex items-center gap-7 lg:gap-9">
             {siteConfig.navigation.map((item) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className="px-3 py-1.5 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all flex items-center gap-1.5"
+                className="text-[13px] font-sans font-light tracking-wide text-alkota-silver hover:text-alkota-ivory transition-colors duration-200"
               >
-                <span>{item.title}</span>
-                {item.badge && (
-                  <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-alkota-amber/20 text-alkota-amber border border-alkota-amber/30">
-                    {item.badge}
-                  </span>
-                )}
+                {item.title}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop Direct Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Desktop Direct Action CTA */}
+          <div className="hidden sm:flex items-center gap-4">
             <Link
-              href="/#quote"
-              className="px-4 py-2 rounded-lg text-xs font-mono font-semibold tracking-wider uppercase bg-gradient-to-r from-alkota-amber to-orange-600 text-white hover:brightness-110 shadow-telemetry-amber transition-all flex items-center gap-1.5"
+              href="/contact"
+              className="border border-white/20 hover:border-alkota-accent hover:text-white text-alkota-ivory font-mono text-[11px] tracking-[0.14em] uppercase px-5 py-2.5 transition-all duration-200"
             >
-              <span>Instant Route Quote</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              Discuss Requirements
             </Link>
           </div>
 
@@ -86,7 +64,7 @@ export default function Header() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white"
+              className="p-2 border border-white/10 text-alkota-silver hover:text-white hover:border-white/25 transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -97,37 +75,27 @@ export default function Header() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-alkota-plate border-b border-white/10 px-4 pt-4 pb-6 space-y-3">
-          <div className="flex items-center gap-2 pb-3 border-b border-white/10 text-xs font-mono text-emerald-400">
-            <Activity className="w-3.5 h-3.5" />
-            <span>NATIONWIDE UK DISPATCH ACTIVE</span>
-          </div>
-
-          <div className="flex flex-col space-y-1">
+        <div className="md:hidden bg-alkota-obsidian/98 border-b border-alkota-border px-6 pt-5 pb-8 space-y-5 backdrop-blur-xl">
+          <div className="flex flex-col space-y-3">
             {siteConfig.navigation.map((item) => (
               <Link
                 key={item.title}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5 flex items-center justify-between"
+                className="text-lg font-display font-light text-alkota-ivory hover:text-alkota-accent transition-colors py-1"
               >
-                <span>{item.title}</span>
-                {item.badge && (
-                  <span className="px-2 py-0.5 rounded text-xs font-mono bg-alkota-amber/20 text-alkota-amber">
-                    {item.badge}
-                  </span>
-                )}
+                {item.title}
               </Link>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-white/10">
+          <div className="pt-4 border-t border-alkota-border">
             <Link
-              href="/#quote"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-lg text-center text-xs font-mono font-bold tracking-wider uppercase bg-alkota-amber text-white block shadow-telemetry-amber"
+              className="w-full py-3.5 border border-alkota-accent text-center text-xs font-mono tracking-[0.14em] uppercase text-white hover:bg-alkota-accent transition-colors block"
             >
-              Instant Route Quote
+              Discuss Requirements
             </Link>
           </div>
         </div>

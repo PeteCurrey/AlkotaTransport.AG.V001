@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Building2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import CtaStrip from "@/components/common/CtaStrip";
@@ -52,22 +52,22 @@ export default function IndustriesHubPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="min-h-screen bg-alkota-abyss text-white pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="min-h-screen bg-alkota-obsidian text-alkota-ivory pt-28 pb-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
           {/* Breadcrumbs */}
           <Breadcrumbs items={[{ name: "Industries", href: "/industries" }]} />
 
           {/* Header */}
-          <header className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-alkota-cyan">
-              <Building2 className="w-3.5 h-3.5" />
-              <span>B2B SECTOR TAILORED ARCHITECTURE</span>
+          <header className="max-w-3xl space-y-6">
+            <div className="flex items-center gap-2.5 text-[11px] font-mono tracking-[0.2em] uppercase text-alkota-accent">
+              <span className="w-5 h-[1px] bg-alkota-accent inline-block" />
+              <span>COMMERCIAL SECTORS</span>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-display font-black uppercase tracking-tight text-white leading-tight">
-              Tailored Automotive Logistics for High-Volume Sectors.
+            <h1 className="font-display font-light text-[44px] sm:text-[64px] lg:text-[76px] leading-[0.96] text-alkota-ivory">
+              Tailored logistics for high-volume sectors.
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Vehicle movement is not generic courier work. Every automotive sector operates under distinct commercial rhythms, contractual SLAs, and compliance benchmarks. We design dedicated logistics workflows to eliminate holding costs and accelerate stock turn.
+            <p className="font-sans font-light italic text-[16px] sm:text-[18px] text-alkota-silver leading-relaxed">
+              Every automotive sector operates under distinct inventory rhythms, contractual SLAs, and compliance benchmarks. We design dedicated logistics workflows to eliminate holding costs and accelerate stock turn.
             </p>
           </header>
 
@@ -76,51 +76,51 @@ export default function IndustriesHubPage() {
             {siteConfig.sectors.map((sector) => (
               <article
                 key={sector.slug || sector.id}
-                className="p-8 rounded-2xl bg-alkota-plate border border-white/10 hover:border-alkota-cyan/30 transition-all flex flex-col justify-between space-y-6 group"
+                className="p-8 border border-alkota-border bg-alkota-surface flex flex-col justify-between space-y-6 group hover:border-alkota-accent/40 transition-colors"
               >
                 <div className="space-y-5">
                   <div className="space-y-2">
-                    <span className="text-[10px] font-mono tracking-widest text-alkota-cyan uppercase block">
-                      TARGET AUDIENCE // {sector.targetAudience}
+                    <span className="text-[10px] font-mono tracking-[0.16em] uppercase text-alkota-muted block">
+                      {sector.targetAudience}
                     </span>
-                    <h2 className="text-2xl font-display font-bold text-white group-hover:text-alkota-cyan transition-colors">
+                    <h2 className="font-display text-2xl sm:text-3xl font-normal text-alkota-ivory group-hover:text-white transition-colors">
                       {sector.title}
                     </h2>
                   </div>
 
-                  <div className="space-y-3 pt-3 border-t border-white/5">
+                  <div className="space-y-4 pt-4 border-t border-alkota-border">
                     <div>
-                      <span className="text-[10px] font-mono text-slate-500 uppercase block mb-1">
-                        THE SECTOR CHALLENGE
+                      <span className="text-[10px] font-mono text-alkota-muted uppercase tracking-[0.16em] block mb-1">
+                        SECTOR CHALLENGE
                       </span>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs font-sans font-light text-alkota-silver leading-relaxed">
                         {sector.painPoint}
                       </p>
                     </div>
 
                     <div>
-                      <span className="text-[10px] font-mono text-slate-500 uppercase block mb-1">
-                        ALKOTA TAILORED WORKFLOW
+                      <span className="text-[10px] font-mono text-alkota-accent uppercase tracking-[0.16em] block mb-1">
+                        ALKOTA WORKFLOW
                       </span>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs font-sans font-light text-alkota-silver leading-relaxed">
                         {sector.solution}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between text-xs font-mono">
-                    <span className="text-slate-400">SLA TARGET:</span>
-                    <span className="text-alkota-cyan font-bold">{sector.slaMetric}</span>
+                  <div className="p-3 border border-alkota-border bg-alkota-obsidian flex items-center justify-between text-xs font-mono">
+                    <span className="text-alkota-muted">SLA TARGET:</span>
+                    <span className="text-alkota-ivory">{sector.slaMetric}</span>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-4 border-t border-alkota-border">
                   <Link
                     href={`/industries/${sector.slug || sector.id}`}
-                    className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-alkota-cyan hover:underline"
+                    className="inline-flex items-center gap-2 text-xs font-mono tracking-[0.14em] uppercase text-alkota-ivory group-hover:text-alkota-accent transition-colors"
                   >
-                    <span>Explore Industry Architecture</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    <span>Sector Architecture</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-alkota-muted group-hover:text-alkota-accent" />
                   </Link>
                 </div>
               </article>
@@ -128,26 +128,29 @@ export default function IndustriesHubPage() {
           </div>
 
           {/* Master Service Agreement (MSA) Callout */}
-          <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="p-8 sm:p-12 border border-alkota-border bg-alkota-surface flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-2 max-w-xl">
-              <h3 className="text-lg font-display font-bold text-white">
-                Enterprise Framework Agreements (MSA)
+              <span className="text-[10px] font-mono tracking-[0.18em] uppercase text-alkota-accent block">
+                ENTERPRISE CONTRACTS
+              </span>
+              <h3 className="font-display text-2xl font-normal text-alkota-ivory">
+                Master Framework Agreements (MSA)
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                We structure high-volume master service agreements with bespoke corridor tariffs, guaranteed driver allocation SLAs, and centralized monthly billing for UK automotive groups.
+              <p className="text-xs sm:text-sm font-sans font-light text-alkota-silver leading-relaxed">
+                We structure high-volume master service agreements with bespoke corridor tariffs, guaranteed driver allocation SLAs, and centralized monthly reporting for UK automotive groups.
               </p>
             </div>
-            <a
-              href="mailto:dispatch@alkota.co.uk?subject=Enterprise%20MSA%20Inquiry"
-              className="px-6 py-3.5 rounded-xl text-xs font-mono font-bold tracking-wider uppercase bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-all shrink-0"
+            <Link
+              href="/contact"
+              className="border border-white/20 hover:border-alkota-accent text-alkota-ivory hover:text-white px-6 py-3.5 text-xs font-mono tracking-[0.14em] uppercase transition-colors shrink-0"
             >
-              Request MSA Discovery Call
-            </a>
+              Request MSA Terms
+            </Link>
           </div>
 
           {/* CTA Strip */}
           <CtaStrip
-            title="Discuss Enterprise Fleet Logistics for Your Organisation"
+            title="Discuss Enterprise Logistics for Your Organisation"
             description="Our commercial operations team will review your monthly movement volume, key geographic corridors, and current SLA bottlenecks to structure an efficient logistics agreement."
           />
         </div>

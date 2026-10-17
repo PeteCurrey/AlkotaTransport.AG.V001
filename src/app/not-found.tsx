@@ -5,27 +5,22 @@ import { siteConfig } from "@/config/site";
 
 export default function NotFound() {
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-alkota-abyss px-4 sm:px-6 lg:px-8 py-24 relative overflow-hidden">
-      {/* Background Architectural Grid Lines */}
-      <div className="absolute inset-0 bg-carbon-grid opacity-20 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-alkota-cyan/5 rounded-full blur-3xl pointer-events-none" />
-
+    <div className="min-h-[80vh] flex items-center justify-center bg-alkota-obsidian px-4 sm:px-6 lg:px-8 py-32 relative overflow-hidden">
       <div className="max-w-xl w-full text-center space-y-8 relative z-10">
-        {/* Telemetry Status Reticle */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-xs font-mono text-red-400">
-          <ShieldAlert className="w-3.5 h-3.5" />
-          <span>ROUTE CORRIDOR UNRESOLVED // ERROR 404</span>
+        <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-alkota-silver uppercase">
+          <ShieldAlert className="w-3.5 h-3.5 text-alkota-accent" />
+          <span>ERROR 404 // PAGE NOT FOUND</span>
         </div>
 
-        <div className="space-y-3">
-          <h1 className="text-6xl sm:text-7xl font-display font-black text-white tracking-tight">
+        <div className="space-y-4">
+          <h1 className="text-7xl sm:text-8xl font-display font-normal text-alkota-ivory tracking-tight">
             404
           </h1>
-          <h2 className="text-xl sm:text-2xl font-display font-bold text-slate-200">
-            Waypoint Not Found in Dispatch Registry
+          <h2 className="text-2xl sm:text-3xl font-display font-normal text-alkota-ivory">
+            Page Not Found
           </h2>
-          <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
-            The requested vehicle logistics destination or service corridor does not exist or has been relocated within the network.
+          <p className="text-sm text-alkota-silver max-w-md mx-auto leading-relaxed font-light">
+            The requested destination or service corridor does not exist or has been relocated within the network.
           </p>
         </div>
 
@@ -33,26 +28,26 @@ export default function NotFound() {
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-mono font-bold tracking-wider uppercase bg-gradient-to-r from-alkota-amber to-orange-600 text-white hover:brightness-110 shadow-telemetry-amber transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3.5 text-xs font-mono tracking-widest uppercase bg-alkota-accent hover:bg-blue-600 text-white transition-colors flex items-center justify-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Return to Homepage</span>
+            <span>Return to Home</span>
           </Link>
 
           <Link
-            href="/drivers/apply"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-mono font-semibold tracking-wider uppercase bg-alkota-plate hover:bg-white/10 text-slate-200 border border-white/15 transition-all flex items-center justify-center gap-2"
+            href="/services"
+            className="w-full sm:w-auto px-6 py-3.5 text-xs font-mono tracking-widest uppercase bg-alkota-surface hover:bg-alkota-elevated text-alkota-ivory border border-alkota-border transition-colors flex items-center justify-center gap-2"
           >
-            <Compass className="w-4 h-4 text-alkota-cyan" />
-            <span>Driver Recruitment</span>
+            <Compass className="w-4 h-4 text-alkota-silver" />
+            <span>View Services</span>
           </Link>
         </div>
 
         {/* Operations Desk Contact Strip */}
-        <div className="pt-8 border-t border-white/10 text-xs font-mono text-slate-500 flex items-center justify-center gap-2">
-          <Phone className="w-3.5 h-3.5 text-slate-400" />
-          <span>Direct Dispatch Inquiries:</span>
-          <a href={`tel:${siteConfig.telephone.replace(/\s+/g, "")}`} className="text-slate-300 hover:text-alkota-cyan">
+        <div className="pt-8 border-t border-alkota-border text-xs font-mono text-alkota-muted flex items-center justify-center gap-2">
+          <Phone className="w-3.5 h-3.5 text-alkota-silver" />
+          <span>Direct Dispatch Enquiries:</span>
+          <a href={`tel:${siteConfig.telephone.replace(/\s+/g, "")}`} className="text-alkota-silver hover:text-alkota-ivory transition-colors">
             {siteConfig.telephone}
           </a>
         </div>

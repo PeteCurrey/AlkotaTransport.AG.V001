@@ -32,7 +32,7 @@ function SupercarModel() {
     if (!groupRef.current) return;
     // Gentle breathing float
     groupRef.current.position.y =
-      Math.sin(state.clock.elapsedTime * 1.4) * 0.04 - 0.1;
+      Math.sin(state.clock.elapsedTime * 1.2) * 0.03 - 0.08;
   });
 
   return (
@@ -42,47 +42,47 @@ function SupercarModel() {
   );
 }
 
-// ─── Studio lighting (unchanged) ─────────────────────────────────────────────
+// ─── Luxury Studio Lighting ─────────────────────────────────────────────────
 function SceneEnvironment() {
   return (
     <>
-      <ambientLight intensity={0.6} />
-      {/* Key light */}
+      <ambientLight intensity={0.35} />
+      {/* Studio Key Light */}
       <directionalLight
-        position={[6, 8, 6]}
-        intensity={1.8}
+        position={[6, 9, 5]}
+        intensity={2.4}
         castShadow
         shadow-mapSize={[1024, 1024]}
         shadow-bias={-0.0001}
       />
-      {/* Telemetry cyan rim light */}
+      {/* Subtle Electric Blue Rim Accent */}
       <spotLight
         position={[-6, 4, -4]}
         angle={0.6}
         penumbra={1}
-        intensity={3.5}
-        color="#00F0FF"
+        intensity={2.6}
+        color="#1D6AF5"
       />
-      {/* Warm fill */}
+      {/* Soft Cool Overhead Fill */}
       <spotLight
-        position={[5, 2, 4]}
+        position={[4, 3, 4]}
         angle={0.7}
-        penumbra={0.8}
-        intensity={1.5}
-        color="#FFE0B2"
+        penumbra={0.9}
+        intensity={1.0}
+        color="#DCE3EC"
       />
       <ContactShadows
         position={[0, -0.05, 0]}
-        opacity={0.8}
-        scale={12}
+        opacity={0.85}
+        scale={13}
         blur={1.8}
         far={3}
+        color="#000000"
       />
     </>
   );
 }
 
-// ─── Loading shimmer shown inside <Suspense> ──────────────────────────────────
 function CanvasLoader() {
   return (
     <mesh>
@@ -92,7 +92,6 @@ function CanvasLoader() {
   );
 }
 
-// ─── Main export ──────────────────────────────────────────────────────────────
 export default function SupercarCanvas() {
   const [mounted, setMounted] = useState(false);
   const [glError, setGlError] = useState(false);
@@ -102,13 +101,7 @@ export default function SupercarCanvas() {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-xs font-mono text-alkota-cyan animate-pulse">
-          INITIALISING 3D TELEMETRY TWIN...
-        </div>
-      </div>
-    );
+    return <FallbackSupercarCard />;
   }
 
   if (glError) {
@@ -118,7 +111,7 @@ export default function SupercarCanvas() {
   return (
     <div className="w-full h-full relative cursor-grab active:cursor-grabbing select-none">
       <Canvas
-        camera={{ position: [-4.2, 2.2, 4.5], fov: 38 }}
+        camera={{ position: [-4.6, 1.8, 4.2], fov: 36 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         dpr={[1, 1.5]}
         onCreated={({ gl }) => {
@@ -135,22 +128,12 @@ export default function SupercarCanvas() {
             enableZoom={false}
             enablePan={false}
             autoRotate
-            autoRotateSpeed={0.8}
+            autoRotateSpeed={0.5}
             maxPolarAngle={Math.PI / 2 - 0.05}
             minPolarAngle={Math.PI / 4}
           />
         </Suspense>
       </Canvas>
-
-
-      <div className="absolute top-4 right-4 pointer-events-none text-right">
-        <span className="text-[10px] font-mono tracking-wider uppercase text-slate-500 block">
-          992 GT3 RS // ALK-01
-        </span>
-        <span className="text-xs font-mono text-alkota-cyan font-semibold">
-          PRECISION SPEC
-        </span>
-      </div>
     </div>
   );
 }

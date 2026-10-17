@@ -76,30 +76,30 @@ export default function DriverApplicationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="min-h-screen bg-alkota-abyss text-white pt-28 pb-20">
+      <div className="min-h-screen bg-alkota-obsidian text-alkota-ivory pt-32 pb-24 border-b border-alkota-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Navigation Breadcrumb */}
           <nav aria-label="Breadcrumb">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-alkota-cyan transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono text-alkota-silver hover:text-alkota-ivory transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>RETURN TO MASTER PORTAL</span>
+              <span>RETURN TO HOME</span>
             </Link>
           </nav>
 
           {/* Page Header */}
-          <header className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-alkota-amber/10 border border-alkota-amber/30 text-xs font-mono text-alkota-amber">
-              <UserCheck className="w-3.5 h-3.5" />
-              <span>TRADE PLATE PROFESSIONAL RECRUITMENT</span>
+          <header className="space-y-5 border-b border-alkota-border pb-10">
+            <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-alkota-silver uppercase">
+              <UserCheck className="w-3.5 h-3.5 text-alkota-accent" />
+              <span>TRADE PLATE DRIVER ONBOARDING</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-display font-black uppercase tracking-tight text-white">
-              Join The ALKOTA Driver Network.
+            <h1 className="text-4xl sm:text-6xl font-display font-normal tracking-tight text-alkota-ivory">
+              Join the Alkota Driver Network.
             </h1>
-            <p className="text-base text-slate-300 max-w-2xl leading-relaxed">
-              We are actively recruiting professional, independent trade plate drivers across all UK regions. Complete our 4-step eligibility screen to confirm compliance with our commercial motor trade insurer.
+            <p className="text-base text-alkota-silver max-w-2xl leading-relaxed font-light">
+              We recruit professional, independent trade plate drivers across all UK corridors. Complete our 4-point eligibility assessment to verify qualification under our motor trade fleet insurer criteria.
             </p>
           </header>
 

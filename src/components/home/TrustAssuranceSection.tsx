@@ -1,20 +1,21 @@
 import React from "react";
 import { siteConfig } from "@/config/site";
-import { Lock, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export default function TrustAssuranceSection() {
   return (
-    <section id="trust" className="py-24 bg-alkota-abyss relative border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="trust" className="py-24 sm:py-32 bg-alkota-surface border-t border-alkota-border relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl space-y-3 pb-16">
-          <span className="text-xs font-mono tracking-widest text-emerald-400 uppercase block">
-            VERIFIABLE ASSURANCE BENCHMARKS
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight uppercase">
-            Rigorous Governance. Verified Standards.
+        <div className="max-w-3xl space-y-4 pb-16">
+          <div className="flex items-center gap-2.5 text-[11px] font-mono tracking-[0.2em] uppercase text-alkota-accent">
+            <span className="w-5 h-[1px] bg-alkota-accent inline-block" />
+            <span>STANDARDS & ASSURANCE</span>
+          </div>
+          <h2 className="font-display font-light text-[38px] sm:text-[52px] leading-[1.02] text-alkota-ivory">
+            Rigorous governance. Verifiable standards.
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
+          <p className="font-sans font-light text-[15px] sm:text-[16px] text-alkota-silver leading-relaxed">
             We publish only verifiable operational standards. No synthetic testimonials or ungrounded statistics—only verified insurance practices, transparent vetting, and auditable metrics.
           </p>
         </div>
@@ -24,48 +25,46 @@ export default function TrustAssuranceSection() {
           {siteConfig.trustCredentials.map((cred, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl bg-alkota-plate border border-white/10 space-y-5 hover:border-emerald-500/30 transition-all flex flex-col justify-between"
+              className="p-8 sm:p-10 border border-alkota-border bg-alkota-obsidian space-y-5 flex flex-col justify-between"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded text-xs font-mono font-semibold tracking-wider uppercase bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                  <span className="text-[10px] font-mono tracking-[0.16em] uppercase text-alkota-accent border border-alkota-accent/30 px-2 py-0.5">
                     {cred.badge}
                   </span>
-                  <span className="text-[11px] font-mono text-slate-400">
+                  <span className="text-[11px] font-mono text-alkota-muted">
                     {cred.status}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-display font-bold text-white">
+                <h3 className="font-display text-2xl font-normal text-alkota-ivory">
                   {cred.title}
                 </h3>
 
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-sm font-sans font-light text-alkota-silver leading-relaxed">
                   {cred.description}
                 </p>
               </div>
 
               {/* Verification Audit Note */}
-              <div className="pt-4 border-t border-white/5 flex items-start gap-2.5 text-xs font-mono text-slate-400">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{cred.verificationNote}</span>
+              <div className="pt-4 border-t border-alkota-border text-xs font-mono text-alkota-muted">
+                {cred.verificationNote}
               </div>
             </div>
           ))}
         </div>
 
         {/* Corporate Due Diligence Box */}
-        <div className="mt-12 p-6 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
-          <div className="flex items-center gap-3">
-            <Lock className="w-4 h-4 text-slate-300" />
-            <span>ENTERPRISE DUE DILIGENCE PACKS (INSURANCE SCHEDULES, SLA MATRICES, RISK ASSESSMENTS) AVAILABLE UPON REQUEST</span>
+        <div className="mt-12 p-6 sm:p-8 border border-alkota-border bg-alkota-obsidian flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-alkota-silver">
+          <div className="max-w-xl">
+            Enterprise due diligence packs (insurance schedules, SLA matrices, driver vetting criteria) are available upon request for commercial procurement teams.
           </div>
-          <a
-            href="mailto:dispatch@alkota.co.uk"
-            className="text-white hover:text-alkota-cyan transition-colors underline shrink-0"
+          <Link
+            href="/contact"
+            className="border border-white/20 hover:border-alkota-accent hover:text-white text-alkota-ivory px-4 py-2 uppercase tracking-[0.14em] text-[11px] transition-colors shrink-0"
           >
             Request Due Diligence Pack
-          </a>
+          </Link>
         </div>
       </div>
     </section>

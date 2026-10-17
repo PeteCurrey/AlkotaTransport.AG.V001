@@ -1,110 +1,118 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function CommercialSectorsSection() {
   const [activeTab, setActiveTab] = useState(siteConfig.sectors[0].id);
   const activeSector = siteConfig.sectors.find((s) => s.id === activeTab) || siteConfig.sectors[0];
 
   return (
-    <section id="industries" className="py-24 bg-alkota-abyss relative border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="industries" className="py-24 sm:py-32 bg-alkota-surface border-t border-alkota-border relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl space-y-3 pb-12">
-          <span className="text-xs font-mono tracking-widest text-alkota-cyan uppercase block">
-            B2B SECTOR TAILORED ARCHITECTURE
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight uppercase">
-            Commercial Logistics For High-Volume Operators.
+        <div className="max-w-3xl space-y-4 pb-12">
+          <div className="flex items-center gap-2.5 text-[11px] font-mono tracking-[0.2em] uppercase text-alkota-accent">
+            <span className="w-5 h-[1px] bg-alkota-accent inline-block" />
+            <span>INDUSTRY VERTICALS</span>
+          </div>
+          <h2 className="font-display font-light text-[38px] sm:text-[52px] leading-[1.02] text-alkota-ivory">
+            Architected around enterprise volume.
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
-            Automotive logistics is not one-size-fits-all. We architect dedicated SLAs and integrated digital workflows tailored to the exact operational rhythms of your industry sector.
+          <p className="font-sans font-light text-[15px] sm:text-[16px] text-alkota-silver leading-relaxed">
+            Automotive logistics is not one-size-fits-all. We align operational SLAs with the specific inventory rhythms of dealerships, leasing portfolios, and remarketing auctions.
           </p>
         </div>
 
-        {/* Desktop Tabs / Mobile Selector */}
-        <div className="flex flex-wrap gap-2 pb-8 border-b border-white/10">
+        {/* Minimalist Sector Selector */}
+        <div className="flex flex-wrap gap-x-8 gap-y-3 pb-6 border-b border-alkota-border">
           {siteConfig.sectors.map((sector) => {
             const isActive = sector.id === activeTab;
             return (
               <button
                 key={sector.id}
                 onClick={() => setActiveTab(sector.id)}
-                className={`px-4 py-2.5 rounded-lg text-xs font-mono tracking-wider uppercase transition-all ${
+                className={`pb-3 text-xs font-mono tracking-[0.16em] uppercase transition-all relative ${
                   isActive
-                    ? "bg-alkota-cyan text-black font-bold shadow-telemetry-cyan"
-                    : "bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10"
+                    ? "text-alkota-ivory font-medium"
+                    : "text-alkota-muted hover:text-alkota-silver"
                 }`}
               >
-                {sector.title.split(" ")[0]}
+                <span>{sector.title}</span>
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-alkota-accent" />
+                )}
               </button>
             );
           })}
         </div>
 
-        {/* Active Sector Feature Card */}
-        <div className="mt-8 p-8 sm:p-12 rounded-2xl bg-alkota-plate border border-white/10 relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column: Sector Specs */}
-            <div className="lg:col-span-8 space-y-6">
+        {/* Active Sector Showcase */}
+        <div className="pt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* Left Specs */}
+            <div className="lg:col-span-8 space-y-8">
               <div className="space-y-2">
-                <span className="text-xs font-mono text-alkota-cyan uppercase tracking-widest block">
-                  TARGET AUDIENCE: {activeSector.targetAudience}
+                <span className="text-[10px] font-mono tracking-[0.18em] uppercase text-alkota-muted block">
+                  TARGET OPERATORS: {activeSector.targetAudience}
                 </span>
-                <h3 className="text-2xl sm:text-4xl font-display font-bold text-white">
+                <h3 className="font-display text-3xl sm:text-4xl font-normal text-alkota-ivory">
                   {activeSector.title}
                 </h3>
               </div>
 
-              {/* Pain Point vs Solution Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-white/10">
-                <div className="p-5 rounded-xl bg-black/40 border border-white/5 space-y-2">
-                  <span className="text-[10px] font-mono uppercase text-red-400 block tracking-wider">
-                    OPERATIONAL FRICTION
+              {/* Operational Comparison */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 border-t border-alkota-border">
+                <div className="space-y-2">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-alkota-muted block">
+                    SECTOR CHALLENGE
                   </span>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm font-sans font-light text-alkota-silver leading-relaxed">
                     {activeSector.painPoint}
                   </p>
                 </div>
 
-                <div className="p-5 rounded-xl bg-black/40 border border-alkota-cyan/20 space-y-2">
-                  <span className="text-[10px] font-mono uppercase text-alkota-cyan block tracking-wider">
-                    THE ALKOTA SOLUTION
+                <div className="space-y-2">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-alkota-accent block">
+                    ALKOTA PROTOCOL
                   </span>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm font-sans font-light text-alkota-silver leading-relaxed">
                     {activeSector.solution}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-2">
-                <a
-                  href="#quote"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-mono font-bold tracking-wider uppercase bg-gradient-to-r from-alkota-amber to-orange-600 text-white hover:brightness-110 shadow-telemetry-amber transition-all"
+              <div className="pt-2 flex items-center gap-6">
+                <Link
+                  href={`/industries/${activeSector.slug || activeSector.id}`}
+                  className="border border-white/20 hover:border-alkota-accent text-alkota-ivory hover:text-white font-mono text-[11px] tracking-[0.14em] uppercase px-6 py-3.5 transition-colors inline-flex items-center gap-2"
                 >
-                  <span>Request Enterprise Rate Card</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                  <span>Sector Capabilities</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-alkota-muted" />
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="text-xs font-mono tracking-[0.14em] uppercase text-alkota-silver hover:text-white transition-colors"
+                >
+                  Request Commercial Terms &rarr;
+                </Link>
               </div>
             </div>
 
-            {/* Right Column: Operational SLA Metric Callout */}
-            <div className="lg:col-span-4 p-8 rounded-xl bg-black/50 border border-white/10 flex flex-col justify-center items-center text-center space-y-3">
-              <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+            {/* Right SLA Benchmark */}
+            <div className="lg:col-span-4 p-8 border border-alkota-border bg-alkota-obsidian space-y-3">
+              <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-alkota-muted block">
                 CONTRACTUAL SLA TARGET
               </span>
-              <span className="text-4xl sm:text-5xl font-mono font-black text-alkota-cyan tracking-tight">
+              <span className="text-4xl sm:text-5xl font-mono font-light text-alkota-ivory tracking-tight block">
                 {activeSector.slaMetric}
               </span>
-              <p className="text-xs text-slate-300 max-w-xs">
+              <p className="text-xs font-sans font-light text-alkota-silver leading-relaxed">
                 {activeSector.slaDescription}
               </p>
-              <div className="pt-4 flex items-center gap-2 text-[11px] font-mono text-emerald-400">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Verified Contract SLA</span>
-              </div>
             </div>
           </div>
         </div>

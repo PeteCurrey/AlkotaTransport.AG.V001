@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { ServiceFaq } from "@/types";
 
 interface FaqAccordionProps {
@@ -44,31 +44,28 @@ export default function FaqAccordion({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-      <section className="py-16 bg-alkota-plate/50 rounded-3xl border border-white/10 p-6 sm:p-10 space-y-8">
-        <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 text-xs font-mono text-alkota-cyan uppercase tracking-widest">
-            <HelpCircle className="w-3.5 h-3.5" />
+      <section className="py-16 sm:py-24 border-t border-alkota-border space-y-10">
+        <div className="space-y-3 max-w-2xl">
+          <div className="flex items-center gap-2.5 text-[10px] font-mono tracking-[0.2em] text-alkota-accent uppercase">
+            <span className="w-5 h-[1px] bg-alkota-accent inline-block" />
             <span>OPERATIONAL CLARITY</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-white">
+          <h2 className="font-display font-light text-2xl sm:text-4xl text-alkota-ivory">
             {title}
           </h2>
-          <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
+          <p className="font-sans font-light text-sm sm:text-base text-alkota-silver leading-relaxed">
             {subtitle}
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="divide-y divide-alkota-border border-y border-alkota-border">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const faqId = `faq-item-${index}`;
             const buttonId = `faq-button-${index}`;
 
             return (
-              <div
-                key={index}
-                className="rounded-xl border border-white/10 bg-alkota-abyss overflow-hidden transition-colors hover:border-white/20"
-              >
+              <div key={index} className="py-6 group">
                 <h3>
                   <button
                     id={buttonId}
@@ -76,12 +73,12 @@ export default function FaqAccordion({
                     onClick={() => toggle(index)}
                     aria-expanded={isOpen}
                     aria-controls={faqId}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 text-sm sm:text-base font-semibold text-white hover:text-alkota-cyan transition-colors"
+                    className="w-full text-left flex items-center justify-between gap-6 text-base sm:text-lg font-sans font-normal text-alkota-ivory hover:text-white transition-colors"
                   >
                     <span>{faq.question}</span>
                     <ChevronDown
-                      className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 text-alkota-cyan" : ""
+                      className={`w-4 h-4 text-alkota-muted shrink-0 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-alkota-accent" : ""
                       }`}
                     />
                   </button>
@@ -91,7 +88,7 @@ export default function FaqAccordion({
                     id={faqId}
                     role="region"
                     aria-labelledby={buttonId}
-                    className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3"
+                    className="pt-4 text-sm font-sans font-light text-alkota-silver leading-relaxed max-w-3xl"
                   >
                     <p>{faq.answer}</p>
                   </div>

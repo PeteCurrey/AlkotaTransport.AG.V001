@@ -2,16 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  Compass,
-  Zap,
-  RefreshCw,
-  CheckSquare,
-  AlertCircle,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import FaqAccordion from "@/components/common/FaqAccordion";
@@ -69,14 +60,6 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   };
 }
 
-const iconMap: Record<string, React.ReactNode> = {
-  Compass: <Compass className="w-8 h-8 text-alkota-cyan" />,
-  ShieldCheck: <ShieldCheck className="w-8 h-8 text-alkota-amber" />,
-  Zap: <Zap className="w-8 h-8 text-emerald-400" />,
-  RefreshCw: <RefreshCw className="w-8 h-8 text-cyan-400" />,
-  CheckSquare: <CheckSquare className="w-8 h-8 text-blue-400" />,
-};
-
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = siteConfig.services.find((s) => s.slug === slug);
@@ -98,6 +81,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       name: siteConfig.name,
       url: siteConfig.url,
       telephone: siteConfig.telephone,
+      email: siteConfig.email,
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "GB",
+      },
     },
     areaServed: {
       "@type": "Country",
@@ -105,13 +93,14 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: service.title,
-      itemListElement: service.features.map((feature) => ({
+      name: `${service.title} Transit Options`,
+      itemListElement: service.features.map((feature, i) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
           name: feature,
         },
+        position: i + 1,
       })),
     },
   };
@@ -122,9 +111,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <div className="min-h-screen bg-alkota-abyss text-white pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {/* Breadcrumb Navigation */}
+      <div className="min-h-screen bg-alkota-obsidian text-alkota-ivory pt-28 pb-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
+          {/* Breadcrumbs Navigation */}
           <Breadcrumbs
             items={[
               { name: "Services", href: "/services" },
@@ -132,33 +121,28 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             ]}
           />
 
-          {/* Service Hero Header */}
+          {/* Service Detail Header */}
           <header className="max-w-4xl space-y-6">
-            <div className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
-              <span className="w-2 h-2 rounded-full bg-alkota-cyan animate-pulse" />
-              <span className="text-alkota-cyan font-semibold">{service.transitMode}</span>
-              <span className="text-slate-500">{"//"}</span>
-              <span className="text-slate-300">NATIONWIDE UK LOGISTICS</span>
+            <div className="flex flex-wrap items-center gap-4">
+              <span className="text-[10px] font-mono tracking-[0.16em] uppercase text-alkota-accent border border-alkota-accent/30 px-2.5 py-1">
+                {service.transitMode}
+              </span>
+              <span className="text-[11px] font-mono text-alkota-muted">
+                {service.insuranceLevel}
+              </span>
             </div>
 
-            <div className="flex items-center gap-4">
-              {iconMap[service.iconName] && (
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 shrink-0">
-                  {iconMap[service.iconName]}
-                </div>
-              )}
-            </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-black uppercase tracking-tight text-white leading-tight">
+            <h1 className="font-display font-light text-[42px] sm:text-[60px] lg:text-[72px] leading-[0.96] text-alkota-ivory">
               {service.title}
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal">
+            <p className="font-sans font-light italic text-[17px] sm:text-[19px] text-alkota-silver leading-relaxed">
               {service.fullDescription}
             </p>
 
             {service.targetAudience && (
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-xs font-mono text-slate-400 flex items-center gap-2">
-                <span className="text-alkota-cyan font-bold">PRIMARY AUDIENCE:</span>
+              <div className="pt-2 text-xs font-mono text-alkota-muted">
+                <span className="text-alkota-accent uppercase tracking-wider">PRIMARY AUDIENCE: </span>
                 <span>{service.targetAudience}</span>
               </div>
             )}
@@ -166,57 +150,60 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Operational Problem Statement */}
           {service.operationalProblem && (
-            <section className="p-8 sm:p-10 rounded-2xl bg-alkota-plate border border-red-500/20 space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-red-400 uppercase tracking-widest">
-                <AlertCircle className="w-4 h-4" />
-                <span>THE OPERATIONAL FRICTION WE RESOLVE</span>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-display font-bold text-white">
+            <section className="p-8 sm:p-12 border border-alkota-border bg-alkota-surface space-y-4">
+              <span className="text-[10px] font-mono text-alkota-muted uppercase tracking-[0.18em] block">
+                OPERATIONAL CHALLENGE
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl font-normal text-alkota-ivory">
                 Overcoming Traditional Movement Bottlenecks
               </h2>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="font-sans font-light text-sm sm:text-base text-alkota-silver leading-relaxed max-w-3xl">
                 {service.operationalProblem}
               </p>
             </section>
           )}
 
-          {/* When to Use This Service */}
+          {/* Deployment Scenarios */}
           {service.whenToUse && service.whenToUse.length > 0 && (
-            <section className="space-y-6">
+            <section className="space-y-8">
               <div className="space-y-2">
-                <span className="text-xs font-mono text-alkota-cyan uppercase tracking-widest block">
+                <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-alkota-accent block">
                   DEPLOYMENT SCENARIOS
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-white">
+                <h2 className="font-display text-2xl sm:text-4xl font-light text-alkota-ivory">
                   When To Deploy This Movement Solution
                 </h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {service.whenToUse.map((scenario, index) => (
                   <div
                     key={index}
-                    className="p-6 rounded-xl bg-alkota-plate border border-white/10 flex items-start gap-3"
+                    className="p-6 sm:p-8 border border-alkota-border bg-alkota-surface space-y-2"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-alkota-cyan shrink-0 mt-0.5" />
-                    <p className="text-sm text-slate-200 leading-relaxed">{scenario}</p>
+                    <span className="text-[10px] font-mono text-alkota-muted block">
+                      SCENARIO {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="font-sans font-light text-sm sm:text-base text-alkota-silver leading-relaxed">
+                      {scenario}
+                    </p>
                   </div>
                 ))}
               </div>
             </section>
           )}
 
-          {/* Operating Process Timeline */}
+          {/* Operating Process Protocol */}
           {service.operatingProcess && service.operatingProcess.length > 0 && (
             <section className="space-y-8">
               <div className="space-y-2">
-                <span className="text-xs font-mono text-alkota-cyan uppercase tracking-widest block">
-                  THE ALKOTA PROTOCOL
+                <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-alkota-accent block">
+                  OPERATING PROTOCOL
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-white">
-                  Transparent Step-by-Step Movement Mechanics
+                <h2 className="font-display text-2xl sm:text-4xl font-light text-alkota-ivory">
+                  Movement Mechanics & Chain of Custody
                 </h2>
-                <p className="text-sm text-slate-400">
-                  Every movement executes through our rigorous four-phase compliance workflow.
+                <p className="font-sans font-light text-sm text-alkota-silver">
+                  Every transit executes through our four-phase auditable workflow.
                 </p>
               </div>
 
@@ -224,16 +211,16 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 {service.operatingProcess.map((step) => (
                   <div
                     key={step.phase}
-                    className="p-6 rounded-xl bg-alkota-plate border border-white/10 flex flex-col justify-between space-y-4 hover:border-alkota-cyan/30 transition-all"
+                    className="p-6 sm:p-8 border border-alkota-border bg-alkota-surface space-y-4 flex flex-col justify-between"
                   >
-                    <div className="space-y-3">
-                      <span className="text-3xl font-mono font-black text-slate-600 block">
+                    <div className="space-y-2">
+                      <span className="font-mono text-2xl font-light text-alkota-muted block">
                         {step.phase}
                       </span>
-                      <h3 className="text-base font-display font-bold text-white">
+                      <h3 className="font-display text-xl font-normal text-alkota-ivory">
                         {step.title}
                       </h3>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="font-sans font-light text-xs text-alkota-silver leading-relaxed">
                         {step.detail}
                       </p>
                     </div>
@@ -243,24 +230,24 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </section>
           )}
 
-          {/* Technical Specifications & SLA Card */}
+          {/* Technical Specifications */}
           {service.specifications && service.specifications.length > 0 && (
-            <section className="p-8 sm:p-10 rounded-2xl bg-white/[0.02] border border-white/10 space-y-6">
+            <section className="p-8 sm:p-12 border border-alkota-border bg-alkota-surface space-y-6">
               <div className="space-y-1">
-                <span className="text-xs font-mono text-slate-400 uppercase tracking-widest block">
-                  VERIFIED OPERATIONAL PARAMETERS
+                <span className="text-[10px] font-mono tracking-[0.18em] uppercase text-alkota-muted block">
+                  OPERATIONAL PARAMETERS
                 </span>
-                <h2 className="text-xl sm:text-2xl font-display font-bold text-white">
+                <h2 className="font-display text-2xl sm:text-3xl font-light text-alkota-ivory">
                   Service Specifications & Assurance
                 </h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4 border-t border-white/10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 border-t border-alkota-border">
                 {service.specifications.map((spec, i) => (
                   <div key={i} className="space-y-1">
-                    <span className="text-xs font-mono text-slate-500 uppercase block">
+                    <span className="text-[10px] font-mono text-alkota-muted uppercase tracking-wider block">
                       {spec.label}
                     </span>
-                    <span className="text-sm font-semibold text-slate-200 block">
+                    <span className="text-sm font-sans text-alkota-ivory block">
                       {spec.value}
                     </span>
                   </div>
@@ -278,15 +265,15 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             />
           )}
 
-          {/* Related Industry Solutions & Cross-linking */}
+          {/* Related Industry Solutions */}
           {service.relatedSectors && service.relatedSectors.length > 0 && (
-            <section className="space-y-6 pt-6 border-t border-white/10">
+            <section className="space-y-8 pt-8 border-t border-alkota-border">
               <div className="space-y-1">
-                <span className="text-xs font-mono text-alkota-cyan uppercase tracking-widest block">
-                  INDUSTRY-SPECIFIC APPLICATIONS
+                <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-alkota-accent block">
+                  INDUSTRY APPLICATIONS
                 </span>
-                <h2 className="text-xl sm:text-2xl font-display font-bold text-white">
-                  Tailored Sector Deployments
+                <h2 className="font-display text-2xl sm:text-3xl font-light text-alkota-ivory">
+                  Sector-Specific Deployments
                 </h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -297,22 +284,22 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                     <Link
                       key={sector.id}
                       href={`/industries/${sector.slug}`}
-                      className="p-6 rounded-xl bg-alkota-plate border border-white/10 hover:border-alkota-cyan/30 transition-all flex flex-col justify-between space-y-3 group"
+                      className="p-6 border border-alkota-border bg-alkota-surface hover:border-alkota-accent transition-colors flex flex-col justify-between space-y-4 group"
                     >
                       <div className="space-y-2">
-                        <span className="text-[10px] font-mono text-slate-500 uppercase block">
+                        <span className="text-[10px] font-mono text-alkota-muted uppercase block">
                           SECTOR SOLUTION
                         </span>
-                        <h3 className="text-base font-display font-bold text-white group-hover:text-alkota-cyan transition-colors">
+                        <h3 className="font-display text-xl font-normal text-alkota-ivory group-hover:text-white transition-colors">
                           {sector.title}
                         </h3>
-                        <p className="text-xs text-slate-400 line-clamp-2">
+                        <p className="text-xs font-sans font-light text-alkota-silver line-clamp-2">
                           {sector.solution}
                         </p>
                       </div>
-                      <span className="text-xs font-mono text-alkota-cyan inline-flex items-center gap-1 group-hover:underline">
-                        <span>View Sector Architecture</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      <span className="text-xs font-mono tracking-[0.14em] uppercase text-alkota-ivory inline-flex items-center gap-1 group-hover:text-alkota-accent">
+                        <span>View Architecture</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-alkota-muted group-hover:text-alkota-accent" />
                       </span>
                     </Link>
                   );
@@ -323,7 +310,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Commercial Conversion Call to Action */}
           <CtaStrip
-            title={`Schedule ${service.title} or Request Rate Card`}
+            title={`Schedule ${service.title} or Request Commercial Terms`}
             description="Our central operations desk provides rapid response on UK transit corridors. Book an individual movement or discuss high-volume commercial account terms."
           />
         </div>

@@ -3,10 +3,8 @@
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import FallbackSupercarCard from "../3d/FallbackSupercarCard";
 
-// Dynamic import with ssr: false to prevent Three.js SSR hydration mismatches
 const SupercarCanvas = dynamic(() => import("../3d/SupercarCanvas"), {
   ssr: false,
   loading: () => <FallbackSupercarCard />,
@@ -24,89 +22,53 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[92vh] pt-28 pb-20 flex items-center overflow-hidden bg-radial-spotlight">
-      {/* Background Architectural Grid Lines */}
-      <div className="absolute inset-0 bg-carbon-grid opacity-35 pointer-events-none" />
+    <section className="relative min-h-screen flex items-center pt-24 pb-16 bg-alkota-obsidian overflow-hidden">
+      {/* Subtle Studio Radial Background */}
+      <div className="absolute inset-0 bg-studio-radial pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Brand Proposition & CTAs */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* Telemetry Status Reticle */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-alkota-cyan animate-pulse" />
-              <span className="text-alkota-cyan font-semibold">UK LOGISTICS TELEMETRY</span>
-              <span className="text-slate-500">{"//"}</span>
-              <span>LIVE DISPATCH NETWORK</span>
+      {/* Main Grid Container */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Editorial Proposition */}
+          <div className="lg:col-span-6 space-y-6 pt-12 lg:pt-0">
+            {/* Minimalist Eyebrow */}
+            <div className="flex items-center gap-2.5 text-[11px] font-mono tracking-[0.2em] uppercase text-alkota-accent">
+              <span className="w-5 h-[1px] bg-alkota-accent inline-block" />
+              <span>NATIONWIDE VEHICLE LOGISTICS</span>
             </div>
 
-            {/* Sharp Brand Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black uppercase tracking-tight text-white leading-[1.05]">
-              Precision Automotive Logistics.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-alkota-cyan via-slate-200 to-white">
-                Nationwide.
-              </span>
+            {/* Editorial Serif Headline */}
+            <h1 className="font-display font-light text-[50px] sm:text-[72px] lg:text-[90px] leading-[0.93] text-alkota-ivory tracking-tight">
+              Every movement.<br />
+              Precisely handled.
             </h1>
 
-            {/* Supporting Copy */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Engineering-grade UK vehicle movement. Combining vetted trade plate professionals, enclosed supercar transport, and 48-point digital ePOD telemetry for dealerships, contract hire fleets, and private collectors.
+            {/* Supporting Proposition */}
+            <p className="font-sans font-light italic text-[16px] sm:text-[18px] text-alkota-silver max-w-md leading-[1.75]">
+              Nationwide vehicle logistics, engineered around the needs of modern automotive businesses.
             </p>
 
-            {/* Two Distinct Calls to Action */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            {/* Understated CTAs */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-4">
               <Link
-                href="#quote"
-                className="px-6 py-4 rounded-xl text-sm font-mono font-bold tracking-wider uppercase bg-gradient-to-r from-alkota-amber to-orange-600 text-white hover:brightness-110 shadow-telemetry-amber transition-all flex items-center justify-center gap-2 group"
+                href="/contact"
+                className="bg-alkota-accent text-white font-mono text-[11px] tracking-[0.14em] uppercase px-7 py-4 hover:bg-alkota-accent-hover transition-colors text-center"
               >
-                <span>Instant Route Quote</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Discuss your requirements
               </Link>
 
               <Link
-                href="#industries"
-                className="px-6 py-4 rounded-xl text-sm font-mono font-semibold tracking-wider uppercase bg-alkota-plate hover:bg-white/10 text-slate-200 border border-white/15 transition-all flex items-center justify-center gap-2"
+                href="/services"
+                className="text-alkota-silver font-sans font-light text-[14px] flex items-center justify-center gap-2 hover:text-white transition-colors duration-200"
               >
-                <span>Fleet Enterprise Solutions</span>
+                <span>Explore our services</span>
+                <span>&rarr;</span>
               </Link>
-            </div>
-
-            {/* Live Telemetry Metric Badges */}
-            <div className="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 text-slate-300">
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono text-slate-500 uppercase block">
-                  CORRIDOR COVERAGE
-                </span>
-                <span className="text-lg sm:text-2xl font-mono font-bold text-white block">
-                  100%
-                </span>
-                <span className="text-xs text-slate-400 block">UK-wide network</span>
-              </div>
-
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono text-slate-500 uppercase block">
-                  DIGITAL AUDIT
-                </span>
-                <span className="text-lg sm:text-2xl font-mono font-bold text-alkota-cyan block">
-                  48-Point
-                </span>
-                <span className="text-xs text-slate-400 block">Timestamped ePOD</span>
-              </div>
-
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono text-slate-500 uppercase block">
-                  TRANSIT ASSURANCE
-                </span>
-                <span className="text-lg sm:text-2xl font-mono font-bold text-emerald-400 block">
-                  Insured
-                </span>
-                <span className="text-xs text-slate-400 block">Motor trade policy</span>
-              </div>
             </div>
           </div>
 
-          {/* Right Column: 3D Supercar Digital Twin Canvas */}
-          <div className="lg:col-span-5 h-[420px] sm:h-[480px] lg:h-[540px] w-full relative rounded-2xl border border-white/10 bg-alkota-plate/50 backdrop-blur-sm overflow-hidden hud-corner">
+          {/* Right Column: 3D Vehicle Experience */}
+          <div className="lg:col-span-6 h-[380px] sm:h-[460px] lg:h-[560px] w-full relative flex items-center justify-center">
             {prefersReducedMotion ? (
               <FallbackSupercarCard />
             ) : (
@@ -114,6 +76,25 @@ export default function HeroSection() {
             )}
           </div>
         </div>
+      </div>
+
+      {/* Bottom Left Exploration Prompt */}
+      <div className="absolute bottom-8 left-5 sm:left-8 z-20 hidden sm:flex items-center gap-2.5 text-[10px] font-mono tracking-[0.2em] text-alkota-muted uppercase">
+        <span className="w-1.5 h-1.5 bg-alkota-accent/70 inline-block" />
+        <span>SCROLL TO EXPLORE &darr;</span>
+      </div>
+
+      {/* Bottom Right Verified Assurance Badges */}
+      <div className="absolute bottom-8 right-5 sm:right-8 z-20 hidden md:flex flex-col gap-2 items-end">
+        <span className="px-3 py-1.5 border border-white/10 text-[10px] font-mono tracking-[0.14em] uppercase text-alkota-silver bg-white/[0.02]">
+          SINGLE-CARRIER NATIONWIDE
+        </span>
+        <span className="px-3 py-1.5 border border-white/10 text-[10px] font-mono tracking-[0.14em] uppercase text-alkota-silver bg-white/[0.02]">
+          48-POINT ePOD TELEMETRY
+        </span>
+        <span className="px-3 py-1.5 border border-white/10 text-[10px] font-mono tracking-[0.14em] uppercase text-alkota-silver bg-white/[0.02]">
+          COMPREHENSIVE MOTOR TRADE POLICY
+        </span>
       </div>
     </section>
   );

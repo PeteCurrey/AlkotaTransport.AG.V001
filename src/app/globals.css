@@ -3,18 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-space-grotesk: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-jetbrains-mono: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --background: #080A0E;
-  --foreground: #F8FAFC;
-  --surface-card: #0E1218;
-  --surface-overlay: rgba(14, 18, 24, 0.75);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 240, 255, 0.3);
-  --accent-cyan: #00F0FF;
-  --accent-amber: #FF5500;
-  --accent-emerald: #10B981;
+  --background: #080808;
+  --foreground: #F7F6F3;
+  --surface-card: #0F0F12;
+  --surface-elevated: #16161A;
+  --surface-overlay: rgba(8, 8, 8, 0.85);
+  --border-subtle: #1C1C20;
+  --border-strong: #2A2A30;
+  --text-primary: #F7F6F3;
+  --text-secondary: #949490;
+  --text-muted: #5A5A56;
+  --color-accent: #1D6AF5;
+  --color-accent-hover: #2B77FF;
+  --color-accent-dim: rgba(29, 106, 245, 0.08);
 }
 
 * {
@@ -39,72 +40,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Sleek Dark Scrollbar */
+/* Custom Minimalist Dark Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080A0E;
+  background: #080808;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
-  border-radius: 4px;
+  background: #1C1C20;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #2A2A30;
 }
 
-/* Glassmorphism & High-Precision HUD Classes */
-.glass-hud {
-  background: rgba(8, 10, 14, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-card {
-  background: rgba(14, 18, 24, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card:hover {
-  border-color: rgba(0, 240, 255, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
-}
-
-/* Technical HUD Crosshair Reticle Marking */
-.hud-corner {
-  position: relative;
-}
-
-.hud-corner::before,
-.hud-corner::after {
-  content: "";
+/* Luxury Automotive Overlay & Glass Utilities */
+.hero-overlay {
   position: absolute;
-  width: 6px;
-  height: 6px;
-  border-color: rgba(0, 240, 255, 0.4);
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(8, 8, 8, 0.94) 0%,
+    rgba(8, 8, 8, 0.72) 48%,
+    rgba(8, 8, 8, 0.25) 100%
+  );
   pointer-events: none;
+  z-index: 1;
 }
 
-.hud-corner::before {
-  top: 0;
-  left: 0;
-  border-top: 1px solid;
-  border-left: 1px solid;
+.surface-card {
+  background: #0F0F12;
+  border: 1px solid #1C1C20;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-.hud-corner::after {
-  bottom: 0;
-  right: 0;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
+.surface-card:hover {
+  border-color: #2A2A30;
 }
 
 /* Reduced Motion Safety */
