@@ -42,7 +42,7 @@
 
 | Phase | Proposed Topic | Target Search Intent | Target Audience | Primary Internal Link | Commercial Objective | Dependencies |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Q1-W1** | **How Dealerships Can Eliminate Inter-Branch Transfer Bottlenecks** | Commercial / Operational | Franchise Dealer Principals, Stock Controllers | `/services/dealership-transfers` | Drive dealer group multi-branch transfer contracts. | Requires dealer group operational case study quotes. |
+| **Q1-W1** | **How Dealerships Can Eliminate Inter-Branch Transfer Bottlenecks** | Commercial / Operational | Franchise Dealer Principals, Stock Controllers | `/services/dealership-transfers` | Drive dealer group multi-branch transfer contracts. | ✅ **LIVE & PUBLISHED** — `/insights/eliminate-dealer-inter-branch-transfer-bottlenecks` |
 | **Q1-W3** | **Selecting a UK Vehicle Movement Supplier: The 10-Point Procurement Checklist** | High-Intent Commercial Investigation | Fleet Procurement Directors, Lessors | `/industries/corporate-fleets` | Lead generation for enterprise Master Service Agreements. | Verification of insurer policy schedules. |
 | **Q1-W5** | **Electric Vehicle Logistics: Managing State of Charge, Cold Weather & Battery Health** | Technical Informational | Corporate ESG Leads, Fleet Managers | `/services/ev-fleet-logistics` | Position ALKOTA as the definitive EV fleet logistics authority. | Validation of rapid hub charging protocols. |
 | **Q2-W1** | **Vehicle Condition Appraisals & Handover Documentation: The Legal Risk of Paper Forms** | Compliance & Legal | Fleet Compliance Leads, Leasing Companies | `/technology` | Highlight ALKOTA 48-point digital ePOD and DataClear protocols. | Legal review of electronic signature admissibility. |
