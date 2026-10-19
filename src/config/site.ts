@@ -1041,5 +1041,194 @@ export const siteConfig = {
       relatedServices: ["dealership-transfers", "trade-plate-delivery", "inspect-and-collect"],
       relatedIndustries: ["dealership-groups", "corporate-fleets", "contract-hire-leasing"],
     },
+    {
+      slug: "uk-vehicle-movement-supplier-procurement-checklist",
+      title: "Selecting a UK Vehicle Movement Supplier: The 10-Point Procurement Checklist",
+      metaDescription:
+        "A structured procurement framework for fleet directors and leasing companies evaluating UK vehicle movement suppliers. Ten auditable criteria covering insurance, telemetry, driver vetting, SLA architecture, and ePOD compliance.",
+      category: "Operational Guide",
+      publishedDate: "2026-10-19",
+      readingTimeMinutes: 10,
+      author: {
+        name: "ALKOTA Procurement Advisory Team",
+        role: "Fleet Logistics Procurement Specialists",
+      },
+      summary:
+        "Fleet procurement decisions for vehicle movement services are rarely reviewed with the same rigour applied to other logistics contracts. The consequences of a poor supplier selection — uninsured movements, condition disputes, failed SLA compliance — are disproportionate to the apparent simplicity of the service. This checklist provides ten auditable criteria for evaluating any UK vehicle movement provider before awarding a contract.",
+      sections: [
+        {
+          heading: "Why Supplier Selection Requires a Formal Procurement Framework",
+          paragraphs: [
+            "Vehicle movement sits in an awkward procurement category. It appears operationally simple — a driver collects a car and delivers it somewhere else — but the liability exposure, compliance requirements, and operational complexity of managing high volumes of driven movements across a national network are substantial.",
+            "Fleet directors and leasing company operations heads who select suppliers informally — on the basis of price alone, or through an ad-hoc referral — routinely discover gaps that only become visible after an incident. A condition dispute with no digital audit trail, a claim refused because the driver fell outside motor trade policy eligibility, or a missed SLA with no contractual remedy.",
+            "A formal procurement evaluation, structured around the ten criteria below, eliminates these gaps before contract award rather than after the first operational failure.",
+          ],
+        },
+        {
+          heading: "Criterion 1 — Comprehensive Motor Trade Insurance Coverage",
+          paragraphs: [
+            "The first and most consequential criterion is insurance. Not all motor trade policies are equivalent, and the differences are material when a high-value vehicle is involved.",
+            "Verify the supplier holds a comprehensive commercial motor trade insurance policy, not a fleet extension. The policy should cover driven vehicles up to a documented maximum valuation that encompasses your highest-value fleet assets. Request a certificate of insurance with the policy schedule, not merely a verbal assurance.",
+            "Ask specifically: does the policy cover supercar and prestige vehicle categories? Does it extend to electric vehicles over £80,000? Are individual drivers named on or excluded from the policy, and what eligibility criteria must they meet?",
+          ],
+          checkpoints: [
+            "Request the certificate of insurance and confirm the maximum per-vehicle valuation",
+            "Verify prestige and EV categories are covered under the existing policy",
+            "Confirm driver eligibility requirements (licence tenure, endorsement codes) within the policy schedule",
+          ],
+        },
+        {
+          heading: "Criterion 2 — Driver Vetting and Eligibility Standards",
+          paragraphs: [
+            "The quality and safety record of the individual driver is your primary operational risk. A supplier's insurance policy may be comprehensive on paper, but policy eligibility clauses typically require individual drivers to meet minimum standards — and breaches void coverage retroactively.",
+            "Establish what the supplier's driver onboarding process includes. Minimum industry practice for a professional vehicle movement provider should include: DVLA licence verification at the point of onboarding and at regular intervals; endorsement code screening (particularly for SP, DD, and IN codes); a minimum licence tenure requirement (typically five years full UK or EU licence); and reference verification from prior automotive employers.",
+            "Ask whether the supplier maintains an active roster of vetted drivers or deploys gig economy contractors with inconsistent screening histories.",
+          ],
+          checkpoints: [
+            "DVLA licence verification at onboarding and at scheduled review intervals",
+            "Endorsement code screening against defined exclusion criteria",
+            "Minimum 5-year full licence tenure as standard eligibility floor",
+            "Professional reference verification from prior automotive industry employers",
+          ],
+        },
+        {
+          heading: "Criterion 3 — Pre-Collection and Delivery Digital Appraisal Protocol",
+          paragraphs: [
+            "Condition documentation is the most frequent source of post-movement disputes in vehicle logistics. Without a standardised, time-stamped photographic record taken at the point of collection — before the vehicle enters the transit corridor — any damage claim becomes a matter of contested recollection rather than documented fact.",
+            "A credible supplier will operate a standardised multi-point digital appraisal at collection, covering all exterior panels, interior surfaces, windscreen, glass, tyres, and accessories. Each photograph should be geotagged and timestamped. Both parties should receive an immediate copy. A second appraisal at delivery creates the closed chain of custody.",
+            "Avoid suppliers who rely on paper forms, unverified driver photographs, or no appraisal process at all. In a volume fleet operation, the cumulative cost of condition disputes handled without a digital baseline will exceed the cost difference between providers within the first quarter of operation.",
+          ],
+          checkpoints: [
+            "Standardised multi-point appraisal (minimum 48 points) at both collection and delivery",
+            "Geotagged and timestamped photographs retained in a retrievable digital record",
+            "Immediate copy of the appraisal issued to the client organisation on completion",
+            "Two-party digital sign-off creating an incontrovertible condition baseline",
+          ],
+        },
+        {
+          heading: "Criterion 4 — Real-Time GPS Telemetry and Transit Visibility",
+          paragraphs: [
+            "For a fleet operations controller managing concurrent movements across multiple regions, the inability to locate a vehicle in transit is not a minor inconvenience — it is an operational failure. A professional movement supplier should provide real-time GPS telemetry visibility during transit, accessible through a client-facing dashboard or direct integration with your fleet management platform.",
+            "At minimum, telemetry should provide live vehicle location, estimated time of arrival at destination, and immediate exception notification if the vehicle deviates from the planned route or transit is delayed beyond a defined threshold.",
+            "Transit visibility is particularly critical for high-value supercar and prestige movements, where the ability to monitor vehicle location in real time is a prerequisite for informed underwriting and client confidence.",
+          ],
+          checkpoints: [
+            "Live GPS tracking available during all active transit movements",
+            "Client-accessible visibility dashboard or integration API",
+            "Automated exception alerts for route deviations or ETA overruns",
+          ],
+        },
+        {
+          heading: "Criterion 5 — Electronic Proof of Delivery (ePOD) and Custody Chain",
+          paragraphs: [
+            "Paper delivery notes are not sufficient for enterprise fleet operations. An electronic Proof of Delivery (ePOD) document — combining geotagged collection and delivery photographs, a completed appraisal record, and a recipient digital signature — provides the custody chain required for BVRLA defleet compliance, manufacturer warranty audit trails, and internal finance lease close-out processes.",
+            "Confirm that the supplier's ePOD is issued in a format retrievable by your operations team and stored securely against the vehicle registration number and movement date. Ask how long records are retained: a minimum of 36 months is appropriate for lease cycle documentation.",
+          ],
+          checkpoints: [
+            "ePOD includes appraisal record, custody timestamps, and recipient digital signature",
+            "Records retrievable by registration number and movement date",
+            "Minimum 36-month document retention for lease cycle and warranty audit use",
+          ],
+        },
+        {
+          heading: "Criterion 6 — Service Level Agreement Architecture",
+          paragraphs: [
+            "A statement of intended service is not an SLA. Before awarding a contract, require the supplier to provide a formal written SLA document specifying: standard collection lead time from confirmed instruction; maximum transit duration by mileage band; escalation protocols for delayed collections; and defined remedies (credit, priority re-dispatch) when SLA thresholds are breached.",
+            "Test the SLA against your own operational requirements. If your leasing business requires doorstep collection within 48 hours of a customer's end-of-contract notification, the supplier's SLA must explicitly commit to this window — not to a best-efforts aspiration.",
+            "Suppliers who cannot provide a formal SLA document are operationally unsuitable for volume fleet contracts regardless of their price point.",
+          ],
+          checkpoints: [
+            "Written SLA document specifying collection lead times by urgency tier",
+            "Defined transit duration bands and deviation thresholds",
+            "Escalation protocols and contractual remedies for SLA breach",
+          ],
+        },
+        {
+          heading: "Criterion 7 — Specialist EV and Prestige Vehicle Capability",
+          paragraphs: [
+            "The UK fleet market is undergoing a structural shift. Battery electric vehicles now account for a significant and growing share of new fleet registrations, and prestige marques — traditionally serviced by specialist enclosed transport — are increasingly moving through driven logistics for efficiency and cost reasons.",
+            "Not all vehicle movement suppliers have adapted their operational protocols to reflect this shift. Moving an electric vehicle without a pre-movement state-of-charge audit, a planned rapid charging stop on long routes, or a documented battery health check at delivery creates operational and liability exposure that a competent fleet operator cannot accept.",
+            "Evaluate whether the supplier has documented EV movement protocols, maintains a driver network with EV familiarisation training, and carries public EV charging account coverage for transit top-ups.",
+          ],
+          checkpoints: [
+            "Documented EV movement protocol including state-of-charge audit at collection",
+            "Planned rapid charging provision for long-range transit movements",
+            "Driver EV familiarisation and charging network account coverage",
+            "Enclosed covered transport capability available for prestige and supercar movements",
+          ],
+        },
+        {
+          heading: "Criterion 8 — Scalability and Peak Surge Capacity",
+          paragraphs: [
+            "A supplier who performs well on a baseline of 20 movements per month may not maintain service standards during an end-of-quarter defleet surge when 200 movements are required in 10 days. Scalability is a procurement criterion that is consistently underweighted until the first operational peak reveals it.",
+            "Ask the supplier: what is their maximum confirmed daily movement capacity? What is their process for managing concurrent regional collections? Do they maintain a pre-vetted reserve driver pool for surge periods, or do they expand into unvetted contractor networks when volume spikes?",
+            "For leasing companies and fleet management organisations whose movement volumes follow predictable seasonal patterns — quarter-end lease returns, manufacturer delivery cycles — establishing a formal peak capacity agreement in advance of the surge is essential.",
+          ],
+          checkpoints: [
+            "Documented maximum daily and weekly movement capacity",
+            "Pre-vetted reserve driver pool for surge periods",
+            "Ability to confirm peak capacity commitments in contract schedules",
+          ],
+        },
+        {
+          heading: "Criterion 9 — Data Protection and Personal Data Sanitisation",
+          paragraphs: [
+            "Every vehicle returned from a corporate lease or fleet assignment contains personal data. Navigation history, paired mobile phones, contact lists, Bluetooth profiles, and stored addresses represent a GDPR liability if not systematically purged before the vehicle enters the defleet chain.",
+            "Confirm whether the supplier's collection protocol includes a standardised personal data sanitisation step — known in the industry as DataClear. This should cover infotainment system reset, Bluetooth device de-pairing, navigation history deletion, and garage code removal. The completion of this step should be documented within the ePOD as a confirmed action, not a driver's discretionary responsibility.",
+          ],
+          checkpoints: [
+            "Standardised DataClear protocol executed at collection as a documented ePOD step",
+            "Covers infotainment reset, Bluetooth de-pairing, navigation and contact history deletion",
+            "Completion recorded and signed within the digital custody document",
+          ],
+        },
+        {
+          heading: "Criterion 10 — Commercial Transparency and Pricing Model",
+          paragraphs: [
+            "The final criterion is pricing structure transparency. Vehicle movement quotes that bundle multiple cost components into a single per-movement fee obscure the true operational cost and create opportunities for margin erosion through fuel surcharges, out-of-hours premiums, and failed-collection recharge fees that are not disclosed at the point of instruction.",
+            "Request a fully itemised pricing schedule covering: the base per-movement rate by mileage band; fuel surcharge calculation method; out-of-hours and weekend rate differentials; failed or aborted collection charges; and storage charges if vehicles cannot be collected within a specified window.",
+            "A professional supplier should provide a transparent pricing schedule without hesitation. Opacity on pricing terms is a proxy indicator for opacity on operational standards.",
+          ],
+          checkpoints: [
+            "Fully itemised pricing schedule — not a single bundled per-movement rate",
+            "Fuel surcharge methodology disclosed and capped or indexed",
+            "Failed collection and out-of-hours premium rates explicitly stated",
+            "Volume discount thresholds and Master Service Agreement pricing available for enterprise contracts",
+          ],
+        },
+        {
+          heading: "Applying the Framework: Scoring Suppliers Against the Ten Criteria",
+          paragraphs: [
+            "Each of the ten criteria above maps to a documented verification request. Before entering contract negotiations with any supplier, require written confirmation on all ten points. A credible, professionally operated vehicle movement provider will respond to each request with specific documentation rather than general assurances.",
+            "Weight the criteria according to your organisation's primary exposure. For a leasing company processing high-volume defleet returns, criteria 3 (digital appraisal), 5 (ePOD), 9 (DataClear), and 6 (SLA) will carry the greatest operational risk if deficient. For a corporate fleet operation managing prestige and EV assets, criteria 1 (insurance coverage limits), 2 (driver vetting), and 7 (EV capability) are the critical thresholds.",
+            "Procurement decisions made on the basis of this framework result in contracts with fewer condition disputes, greater operational predictability, and a compliance posture that withstands scrutiny at lease audit, BVRLA inspection, and manufacturer warranty review.",
+          ],
+        },
+      ],
+      faqs: [
+        {
+          question: "How long does a thorough vehicle movement supplier evaluation typically take?",
+          answer:
+            "A structured evaluation against the ten criteria above — requesting written documentation and conducting a reference check with an existing client — typically requires five to ten working days. For enterprise contracts representing significant movement volumes, a formal tender process with a scored response matrix is appropriate and will require three to four weeks for a competitive evaluation.",
+        },
+        {
+          question: "Should we always select the lowest-price vehicle movement supplier?",
+          answer:
+            "Price is one criterion, not the primary criterion. The cost of a single uninsured incident, a BVRLA appraisal dispute, or an SLA failure that triggers a customer complaint will routinely exceed the accumulated cost saving from selecting a lower-priced supplier over a 12-month contract. A transparent supplier with a robust operational framework will typically justify a moderate price premium through reduced administrative burden and zero dispute costs.",
+        },
+        {
+          question: "Do we need a Master Service Agreement (MSA) for vehicle movement, or is a standard purchase order process sufficient?",
+          answer:
+            "For organisations generating more than 30 vehicle movements per month, a Master Service Agreement with a defined pricing schedule, SLA schedule, and liability framework is strongly recommended. An MSA ensures that the insurance, data protection, and SLA commitments verified during procurement are contractually binding rather than implied. Standard purchase order processes leave the critical liability terms undefined.",
+        },
+        {
+          question: "What are the most common procurement errors fleet directors make when selecting vehicle movement suppliers?",
+          answer:
+            "The three most frequent errors are: selecting on price without verifying insurance coverage limits; failing to require a digital appraisal protocol and discovering the gap only after a condition dispute; and not establishing a formal SLA before operational peak periods. All three are avoidable through a structured pre-contract evaluation.",
+        },
+      ],
+      relatedServices: ["inspect-and-collect", "ev-fleet-logistics", "dealership-transfers"],
+      relatedIndustries: ["corporate-fleets", "contract-hire-leasing", "dealership-groups"],
+    },
   ] as EditorialArticle[],
 };
