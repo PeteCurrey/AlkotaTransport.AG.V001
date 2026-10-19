@@ -1230,5 +1230,112 @@ export const siteConfig = {
       relatedServices: ["inspect-and-collect", "ev-fleet-logistics", "dealership-transfers"],
       relatedIndustries: ["corporate-fleets", "contract-hire-leasing", "dealership-groups"],
     },
+    {
+      slug: "electric-vehicle-logistics-managing-soc-battery-health",
+      title: "Electric Vehicle Logistics: Managing State of Charge, Cold Weather & Battery Health",
+      metaDescription:
+        "Technical guide for fleet operators and lessors on managing electric vehicle logistics. Best-practice protocols for State of Charge (SoC) management, winter range degradation, en-route rapid charging, and long-term battery preservation.",
+      category: "Operational Guide",
+      publishedDate: "2026-10-19",
+      readingTimeMinutes: 9,
+      author: {
+        name: "ALKOTA EV Technical Operations Desk",
+        role: "Electric Fleet Movement & Battery Telemetry Specialists",
+      },
+      summary:
+        "Transporting modern battery electric vehicles (BEVs) demands a fundamental departure from internal combustion logistics. Temperature-dependent range loss, battery chemistry degradation curves, State of Charge (SoC) thresholds, and high-voltage charging networks introduce critical operational considerations. This technical guide outlines the protocols required to preserve battery integrity and guarantee handover readiness across nationwide fleet movements.",
+      sections: [
+        {
+          heading: "The Operational Reality of EV Fleet Movements",
+          paragraphs: [
+            "For decades, vehicle movement protocols were calibrated around internal combustion drivetrains. A driver collected a vehicle, noted the fuel gauge, stopped at any roadside petrol station when required, and delivered the car within minutes of the projected ETA. Liquid fuel availability is ubiquitous, refueling takes five minutes, and cold weather has negligible impact on operational range.",
+            "Applying these legacy assumptions to battery electric vehicles (BEVs) introduces severe operational points of failure. High-voltage lithium-ion batteries behave dynamically according to thermal state, ambient temperature, discharge depth, and charging power. Furthermore, an EV delivered to an executive or retail customer with 8% battery creates an immediate operational crisis and negative handover sentiment.",
+            "Professional EV logistics requires a disciplined, data-led protocol covering pre-collection audits, route-planned charging corridors, and strict State of Charge (SoC) delivery thresholds.",
+          ],
+          checkpoints: [
+            "Legacy combustion movement protocols result in roadside recovery events and damaged client relationships when applied to BEVs",
+            "Range estimation requires dynamic calculation factoring in ambient weather, elevation, highway speeds, and cabin heating loads",
+            "Recipient delivery threshold should be contracted at a minimum of 60% SoC to ensure operational readiness upon handover",
+          ],
+        },
+        {
+          heading: "Pre-Collection Protocols: State of Charge Verification & Cable Audits",
+          paragraphs: [
+            "Operational risk in EV transit is concentrated at the point of collection. Dispatching a driver to collect a vehicle without verifying its existing charge state frequently leads to stranded assets or delayed departures.",
+            "At ALKOTA, our pre-collection protocol requires collection facilities, auction compounds, or dealerships to confirm that the vehicle has a minimum 50% SoC prior to driver arrival. Upon arrival, the driver's first duty is to document the precise dashboard SoC percentage, displayed range estimate, and high-voltage warning indicators within the 48-point digital ePOD system.",
+            "Charging cable custody is another common defleet dispute. Replacement manufacturer Type 2 charging cables and domestic Mode 2 trickle cables cost between £250 and £600. The collection audit must inspect the vehicle boot, underfloor compartments, and front trunk (frunk) to photograph and record serial numbers of all charging equipment before keys change hands.",
+          ],
+          checkpoints: [
+            "Mandate pre-collection SoC verification before driver dispatch to prevent arriving at depleted vehicles",
+            "Capture geotagged, timestamped photographs of the driver instrument cluster displaying SoC and battery status",
+            "Audit and document Mode 3 (Type 2 to Type 2) and Mode 2 (domestic 3-pin) cables and locking adapters",
+            "Inspect charge port motorisation, latch pins, and weather seals for signs of mechanical force or corrosion",
+          ],
+        },
+        {
+          heading: "Cold Weather Dynamics & Range Degradation Heuristics",
+          paragraphs: [
+            "The impact of ambient temperature on EV range is governed by electrochemical physics. When ambient temperatures drop below 5°C, the electrolyte solution inside lithium-ion battery cells becomes more viscous. This increases internal electrical resistance, slowing lithium-ion movement between anode and cathode and reducing usable battery capacity.",
+            "Simultaneously, electric vehicles must generate cabin and battery heating without waste engine heat, relying on high-voltage positive temperature coefficient (PTC) heaters or heat pump systems that draw between 2 kW and 6 kW of continuous electrical power. At sustained 70 mph motorway speeds in 0°C conditions, real-world range can drop by 25% to 35% compared to official WLTP ratings.",
+            "To mitigate winter range degradation, logistics planners must apply conservative consumption multipliers when plotting charging stops along national motorway corridors. Vehicles should be pre-conditioned while still connected to the mains grid before collection whenever possible, drawing thermal energy from the grid rather than the traction battery.",
+          ],
+          checkpoints: [
+            "Apply a 1.30x consumption multiplier to all motorway transit routes when ambient temperatures drop below 5°C",
+            "Pre-condition vehicle cabins and batteries while connected to wallbox chargers prior to departure",
+            "Enforce a mandatory minimum 20% SoC buffer reserve when approaching planned en-route charging hubs",
+          ],
+        },
+        {
+          heading: "High-Power En-Route Charging & Battery Health Preservation",
+          paragraphs: [
+            "When long-distance relocations exceed a vehicle's single-charge range, en-route charging is unavoidable. However, rapid DC charging must be managed carefully to avoid unnecessary battery cell degradation and prolonged transit delays.",
+            "Lithium-ion batteries accept electrical charge at varying rates depending on their state of charge, known as the charging curve. Between 10% and 70% SoC, modern EVs can accept high peak power (up to 150 kW–350 kW). Once the battery reaches 80%, internal cell resistance and heat cause the vehicle's battery management system (BMS) to drastically throttle charging speed to protect cell chemistry.",
+            "Spending 25 minutes charging from 80% to 100% is inefficient for transit logistics and exposes battery cells to prolonged high-voltage stress. Drivers should charge within the 20% to 80% sweet spot at ultra-rapid hubs (Ionity, Fastned, Gridserve, Instavolt) and only top up above 80% immediately prior to the final destination delivery leg.",
+          ],
+          checkpoints: [
+            "Optimize en-route charging stops around the 20% to 80% battery charging curve for maximum turnaround speed",
+            "Equip drivers with multi-network RFID payment credentials to prevent public charging terminal app failures",
+            "Avoid leaving vehicles parked overnight at extreme SoC states (< 10% or > 90%) to preserve cell longevity",
+          ],
+        },
+        {
+          heading: "Delivery Handover: Recipient Familiarisation & Data Sanitisation",
+          paragraphs: [
+            "The culmination of an EV transit movement is the professional destination handover. When delivering an electric vehicle to a corporate fleet driver or retail customer, the logistics specialist acts as the brand ambassador.",
+            "ALKOTA drivers conduct a formal familiarisation briefing upon delivery: demonstrating charge port release mechanisms, emergency manual release cables, regenerative braking paddle settings, and charging status indicator lights. This eliminates post-delivery service calls to the leasing company from drivers unfamiliar with EV operation.",
+            "Finally, before obtaining the recipient's digital signature, our DataClear protocol ensures that any temporary Bluetooth connections, driver profile accounts, or navigation telemetry utilized during transit are permanently wiped from the infotainment system, ensuring complete privacy compliance under UK GDPR.",
+          ],
+          checkpoints: [
+            "Deliver vehicle with contracted SoC threshold (minimum 60% standard) ready for immediate deployment",
+            "Execute recipient walk-around covering charging hardware operation and regenerative drive modes",
+            "Verify complete infotainment and telemetry reset via ALKOTA DataClear handover protocol",
+          ],
+        },
+      ],
+      faqs: [
+        {
+          question: "What is ALKOTA's standard delivery State of Charge (SoC) guarantee?",
+          answer:
+            "Our standard fleet service guarantees delivery with a minimum of 60% SoC, allowing the driver or dealership to operate the vehicle immediately without urgent charging. Custom handover thresholds (up to 90% or 100% for urgent commercial deployments) can be specified within the booking portal.",
+        },
+        {
+          question: "How does ALKOTA handle charging costs incurred during transit?",
+          answer:
+            "En-route public rapid charging costs are tracked via consolidated fleet billing and transparently itemised on the final invoice at cost, accompanied by the charging session telemetry receipt indicating kWh delivered and terminal timestamp.",
+        },
+        {
+          question: "What happens if a collected EV does not have sufficient charge to reach a charging hub?",
+          answer:
+            "If a vehicle is presented at collection with critically depleted battery reserves (< 15% SoC) and no on-site charging facilities exist, our operations desk assesses whether emergency low-power top-up is viable or immediately re-assigns the movement to a hydraulic demountable flatbed transporter to prevent complete high-voltage battery lock-out.",
+        },
+        {
+          question: "Can prestige electric vehicles be transported in enclosed covered trailers?",
+          answer:
+            "Yes. For high-value electric vehicles, prototypes, or showroom unveilings (such as Porsche Taycan Turbo GT, Lotus Evija, or Rolls-Royce Spectre), ALKOTA provides enclosed, climate-controlled covered transport. This eliminates public road mileage, stone-chip risks, and public charging exposure entirely.",
+        },
+      ],
+      relatedServices: ["ev-fleet-logistics", "trade-plate-delivery", "covered-vehicle-transport"],
+      relatedIndustries: ["corporate-fleets", "contract-hire-leasing", "dealership-groups"],
+    },
   ] as EditorialArticle[],
 };
